@@ -3,10 +3,8 @@ import cv2
 import keras
 import tensorflow as tf
 from keras.models import load_model
-#import parinya
 
-#obj = parinya.YOLOv3('coco.names', 'yolov2-tiny.cfg', 'yolov2-tiny.weights')
-model = tf.keras.models.load_model('emotion-1.h5')
+model = tf.keras.models.load_model('emotion_1.h5')
 gender_model = tf.keras.models.load_model('gender_1.h5')
 age_model = tf.keras.models.load_model('age_2.h5')
 
@@ -26,9 +24,7 @@ while True:
     facecasc = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     faces = facecasc.detectMultiScale(gray,scaleFactor=1.3, minNeighbors=5)
-    #obj_detect = obj.detect(frame)
-    #obj_class = int(np.argmax(obj_detect))
-    #print('object', obj_detect)
+
     for (x, y, w, h) in faces:
         cv2.rectangle(frame, (x, y-50), (x+w, y+h+10), (255, 0, 0), 2)
         roi_gray = gray[y:y + h, x:x + w]
@@ -54,12 +50,10 @@ while True:
 
         cv2.putText(frame, emotion_dict[emo_class], (x+20, y-100), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
         cv2.putText(frame, gender_classes[gender_class], (x+20, y-60), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
-        cv2.putText(frame, age_classes[age_class], (x+260, y-60), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+        cv2.putText(frame, age_classes[age_class], (x+260, y-140), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
         #print('object:', obj_detect, 'emotion:', emo_class, 'gender:', gender_class, file=open("output_3.txt", "a"))
         #print('object:', obj_detect, 'emotion:', emo_class, 'gender:', gender_class, 'age:', age_class)
-
-    #print('object:', obj_detect, file=open('output_2.txt', 'a'))
-    #horizontal_img = cv2.flip(img, 0)
+        
     cv2.imshow('Video', cv2.resize(frame,(640, 480),interpolation = cv2.INTER_CUBIC))
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
