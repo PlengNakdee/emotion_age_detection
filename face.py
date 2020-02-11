@@ -50,8 +50,7 @@ while True:
 
         cv2.putText(frame, emotion_dict[emo_class], (x+20, y-100), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
         cv2.putText(frame, gender_classes[gender_class], (x+20, y-60), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
-        cv2.putText(frame, age_classes[age_class], (x+260, y-140), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
-        #print('object:', obj_detect, 'emotion:', emo_class, 'gender:', gender_class, file=open("output_3.txt", "a"))
+        cv2.putText(frame, age_classes[age_class], (x+20, y-140), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
         #print('object:', obj_detect, 'emotion:', emo_class, 'gender:', gender_class, 'age:', age_class)
         
     cv2.imshow('Video', cv2.resize(frame,(640, 480),interpolation = cv2.INTER_CUBIC))
