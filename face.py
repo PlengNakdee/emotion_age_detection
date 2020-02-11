@@ -4,7 +4,7 @@ import keras
 import tensorflow as tf
 from keras.models import load_model
 
-model = tf.keras.models.load_model('emotion_1.h5')
+model = tf.keras.models.load_model('emotion_2.h5')
 gender_model = tf.keras.models.load_model('gender_1.h5')
 age_model = tf.keras.models.load_model('age_2.h5')
 
