@@ -1,5 +1,5 @@
 # emotion_age_detection
-Using deep learning to detect emotion, gender and age
+Using deep learning to detect emotion and age from faces
 
 Here are links to datasets
 Emotion
